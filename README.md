@@ -31,8 +31,7 @@ A modern, React-based mapping application designed for defining geographical "Ar
 
 1.  **Clone the repository**
     ```bash
-    git clone [https://github.com/your-username/map-aoi-tool.git](https://github.com/your-username/map-aoi-tool.git)
-    cd map-aoi-tool
+    git clone https://github.com/Kuldeep6853/Flowbit.aiAssignment.git
     ```
 
 2.  **Install dependencies**
