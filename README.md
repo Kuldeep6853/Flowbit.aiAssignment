@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+# Map Area of Interest Tool
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, React-based mapping application designed for defining geographical "Areas of Interest" (AOI). This tool features a custom sidebar workflow, interactive vector drawing tools, and WMS layer integration, built with a specific cream & terracotta design system.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **Interactive Map**: Built with [Leaflet](https://leafletjs.com/) and `react-leaflet`.
+* **Vector Drawing Tools**: Custom-styled toolbar to draw Polygons, Polylines, and Markers to define regions.
+* **Sidebar Workflows**:
+    * **Main Menu**: Navigation and options.
+    * **Search Interface**: Location search with suggestion dropdowns.
+    * **Project Scope**: Hierarchical tree view for managing selected areas.
+* **WMS Integration**: Configured to consume WMS layers (Digital Orthophotos NRW).
+* **Custom UI/UX**:
+    * Glassmorphism navigation rail.
+    * Floating action buttons for map tools.
+    * Tailwind CSS styling matching a specific design specification.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Framework**: [React](https://react.dev/) (v18+) with [TypeScript](https://www.typescriptlang.org/)
+* **Build Tool**: [Vite](https://vitejs.dev/)
+* **Styling**: [Tailwind CSS](https://tailwindcss.com/) & [clsx](https://github.com/lukeed/clsx)
+* **Mapping**:
+    * `leaflet`
+    * `react-leaflet`
+    * `leaflet-draw` & `react-leaflet-draw`
+* **Icons**: [Lucide React](https://lucide.dev/)
 
-## Expanding the ESLint configuration
+## 📦 Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/your-username/map-aoi-tool.git](https://github.com/your-username/map-aoi-tool.git)
+    cd map-aoi-tool
+    ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3.  **Start the development server**
+    ```bash
+    npm run dev
+    ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+4.  Open your browser to `http://localhost:5173`.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📁 Project Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```text
+src/
+├── components/
+│   ├── LayerPanel.tsx      # (Optional) WMS/Feature toggle panel
+│   ├── MapLayout.tsx       # Main Leaflet map & Drawing logic
+│   ├── NavigationRail.tsx  # Left vertical glassmorphism nav
+│   └── SidebarPanel.tsx    # State-driven drawer (Menu -> Search -> Scope)
+├── App.tsx                 # Layout composition & global state
+├── main.tsx                # Entry point
+└── index.css               # Global styles & Leaflet Draw overrides
